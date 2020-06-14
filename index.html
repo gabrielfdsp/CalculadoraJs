@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<title>calc</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <style>
+      .calc {
+        margin-top: 40px;
+        border: solid 1px #000;
+        padding: 20px;
+        background-color: #2E2E2E;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px #000;
+      }
+
+      .btn {
+        width: 60px;
+        height: 50px;
+        margin: 5px;
+        box-shadow: 1px 1px 1px #000;
+      }
+
+      .clear {
+        width: 130px;
+      }
+
+      .enter {
+        height: 110px;
+      }
+
+      .zero {
+        width: 130px;
+      }
+
+      .resultado {
+        text-align: right;
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: solid 1px #000;
+        box-shadow: 1px 1px 1px #000;
+      }
+
+    </style>
+	</head>
+
+  <body style="background: #D9D9D9">
+
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <br />
+
+          <div class="calc">
+            <input type="text" class="form-control resultado" placeholder="0" disabled="disabled" id="tela"/>
+            
+            <div class="row">
+              <button type="button" class="btn btn-dark btn-lg clear font-weight-light" onclick="calc('acao','clear')">C</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('acao','/')">/</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('acao','*')">x</button>
+            </div>
+
+            <div class="row">
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('num',7)">7</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('num',8)">8</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('num',9)">9</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('acao','-')">-</button>
+            </div>
+            
+            <div class="row">
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('num',4)">4</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('num',5)">5</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('num',6)">6</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('acao','+')">+</button>
+            </div>
+
+            <div class="row">
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('num',1)">1</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('num',2)">2</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('num',3)">3</button>
+              <button type="button" class="btn btn-dark btn-lg enter" onclick="calc('acao','resultado')">=</button>
+            </div>
+
+            <div class="row" style="margin-top: -60px">
+              <button type="button" class="btn btn-dark zero btn-lg font-weight-light" onclick="calc('num', 0)">0</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calc('num','.')">.</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>    
+  </body>
+  <script>
+    function calc(tipo,valor){
+      if(tipo == 'acao')
+      {
+        if(valor === '+' || valor === '-' || valor === '/' || valor === '*')
+        {
+          document.getElementById('tela').value += valor;
+        }
+        else if(valor == 'clear')
+        {
+          document.getElementById('tela').value = '';
+        }
+        else
+        {
+          var total = eval(document.getElementById('tela').value);
+          document.getElementById('tela').value = total;
+        }
+      }
+      else
+      {
+        document.getElementById('tela').value += valor;
+      }
+
+    }
+  </script>
+
+</html>
